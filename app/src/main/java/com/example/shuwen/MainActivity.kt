@@ -1,6 +1,9 @@
 package com.example.shuwen
 
 import android.os.Bundle
+// new add import
+import android.widget.TextView
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -12,6 +15,8 @@ import com.example.shuwen.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var textView: TextView
+    //super.onCreate(savedInstanceState)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,4 +37,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+}
+
+private fun fetchUserData(){
+
 }

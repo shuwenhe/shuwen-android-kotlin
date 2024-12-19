@@ -11,6 +11,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.shuwen.databinding.ActivityMainBinding
+import java.net.HttpURLConnection
+import java.util.concurrent.Executors
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,5 +43,19 @@ class MainActivity : AppCompatActivity() {
 }
 
 private fun fetchUserData(){
-
+    val executorService = Executors.newSingleThreadExecutor()
+    executorService.execute{
+        var connection: HttpURLConnection? = null
+        try {
+            val url = URL("http://www.xstiku.com/getUserData")
+            connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+            connection.connectTimeout = 5000
+            connection.readTimeout = 5000
+        }catch (e:Exception){
+//            runOnUiThread{
+//                Log.e("MainActivity","网络请求失败：${e.message}")
+//            }
+        }
+    }
 }

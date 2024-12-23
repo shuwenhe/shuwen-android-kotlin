@@ -16,6 +16,7 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.util.concurrent.Executors
 import java.net.URL
+import android.util.Log
 
 import org.json.JSONArray
 import org.json.JSONObject
@@ -53,6 +54,8 @@ private fun fetchUserData(){
         var connection: HttpURLConnection? = null
         try {
             val url = URL("http://www.xstiku.com/getUserData")
+            // print url
+            Log.d("MainActivity","request URL:"+url.toString())
             connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
             connection.connectTimeout = 5000
@@ -68,7 +71,6 @@ private fun fetchUserData(){
                     response.append(inputLine)
                 }
                 reader.close()
-                
             }
         }catch (e:Exception){
 //            runOnUiThread{
